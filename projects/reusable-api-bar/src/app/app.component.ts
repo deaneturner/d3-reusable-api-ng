@@ -28,8 +28,8 @@ export class AppComponent implements OnInit{
         const dataset = data;
 
         barChart
-          .width(300)
-          .height(200)
+          .width(960)
+          .height(500)
           .margin({
             left: 50,
             bottom: 30,
