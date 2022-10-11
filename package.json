@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start-archetypal": "ng serve archetypal-bar",
-    "start-reusable-api": "ng serve reusable-api-bar",
+    "start-archetypal": "ng serve archetypal-bar --port 4200",
+    "start-reusable-api": "ng serve reusable-api-bar --port 4201",
     "build-archetypal": "ng build archetypal-bar",
     "build-reusable-api": "ng build reusable-api-bar",
     "build-shared": "ng build shared",
