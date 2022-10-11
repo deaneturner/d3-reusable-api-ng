@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import * as d3 from 'd3';
+// @ts-ignore
 import ReusableApiBarChart from '../../../shared/src/lib/charts/reusable-api-bar-chart';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit{
   title = 'reusable-api-bar';
 
   ngOnInit(): void {
 
-    d3.tsv('data.tsv')
+    d3.tsv('assets/data.tsv')
       .then((data) => {
         return data.map((d) => {
           // @ts-ignore
@@ -32,7 +34,7 @@ export class AppComponent implements OnInit{
             left: 50,
             bottom: 30,
           })
-          .on('customMouseOver', (event, data) => {
+          .on('customMouseOver', (event: any, data: any) => {
             // eslint-disable-next-line no-console
             console.log('data', data);
           });

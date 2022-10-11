@@ -1,3 +1,4 @@
+// Listing 5-20. Final Bar Chart
 import * as d3 from 'd3';
 
 function ReusableApiBarChart() {
@@ -45,88 +46,88 @@ function ReusableApiBarChart() {
     xAxis = d3.axisBottom(xScale);
 
     yAxis = d3.axisLeft(yScale)
-      .ticks(10, '%');
+    .ticks(10, '%');
   }
 
   function buildContainerGroups(){
     let container = svg
-      .append('g')
-      .classed('container-group', true)
-      .attr(
-        'transform',
-        `translate(${margin.left},${margin.top})`
-      );
+    .append('g')
+    .classed('container-group', true)
+    .attr(
+      'transform',
+      `translate(${margin.left},${margin.top})`
+    );
 
     container
-      .append('g')
-      .classed('chart-group', true);
+    .append('g')
+    .classed('chart-group', true);
     container
-      .append('g')
-      .classed('x-axis-group axis', true);
+    .append('g')
+    .classed('x-axis-group axis', true);
     container
-      .append('g')
-      .classed('y-axis-group axis', true);
+    .append('g')
+    .classed('y-axis-group axis', true);
   }
 
   function buildScales(){
     xScale = d3.scaleBand()
-      .rangeRound([0, chartWidth])
-      .padding(0.1)
-      .domain(data.map(getLetter));
+    .rangeRound([0, chartWidth])
+    .padding(0.1)
+    .domain(data.map(getLetter));
 
     yScale = d3.scaleLinear()
-      .rangeRound([chartHeight, 0])
-      .domain([0, d3.max(data, getFrequency)]);
+    .rangeRound([chartHeight, 0])
+    .domain([0, d3.max(data, getFrequency)]);
   }
 
   function buildSVG(container){
     if (!svg) {
       svg = d3.select(container)
-        .append('svg')
-        .classed('bar-chart', true);
+      .append('svg')
+      .classed('bar-chart', true);
 
       buildContainerGroups();
     }
     svg
-      .attr('width', width)
-      .attr('height', height);
+    .attr('width', width)
+    .attr('height', height);
   }
 
   function drawAxes(){
     svg.select('.x-axis-group.axis')
-      .attr('transform', `translate(0,${chartHeight})`)
-      .call(xAxis);
+    .attr('transform', `translate(0,${chartHeight})`)
+    .call(xAxis);
 
     svg.select('.y-axis-group.axis')
-      .call(yAxis)
-      .append('text')
-      .attr('transform', 'rotate(-90)')
-      .attr('y', 6)
-      .attr('dy', '0.71em')
-      .attr('text-anchor', 'end')
-      .text('Frequency');
+    .call(yAxis)
+    .append('text')
+    .attr('transform', 'rotate(-90)')
+    .attr('y', 6)
+    .attr('dy', '0.71em')
+    .attr('text-anchor', 'end')
+    .text('Frequency');
   }
 
   function drawBars(){
     let bars = svg.select('.chart-group').selectAll('.bar')
-      .data(data);
+    .data(data);
 
     // Enter
     bars.enter()
-      .append('rect')
-      .classed('bar', true)
-      .attr('x', ({letter}) => xScale(letter))
-      .attr('y', ({frequency}) => yScale(frequency))
-      .attr('width', xScale.bandwidth())
-      .attr('height', ({frequency}) => chartHeight - yScale(frequency))
-      .on('mouseover', function(d) {
-        dispatcher.call('customMouseOver', this, d);
-      });
+    .append('rect')
+    .classed('bar', true)
+    .attr('x', ({letter}) => xScale(letter))
+    .attr('y', ({frequency}) => yScale(frequency))
+    .attr('width', xScale.bandwidth())
+    .attr('height', ({frequency}) => chartHeight - yScale(frequency))
+    .on('mouseover', function(d) {
+      dispatcher.call('customMouseOver', this, d);
+    });
 
     // Exit
     bars.exit()
-      .style('opacity', 0)
-      .remove();
+    .style('opacity', 0)
+    .remove();
   }
 
   exports.height = function(_x) {
