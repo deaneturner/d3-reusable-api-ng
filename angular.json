@@ -14,6 +14,19 @@
       "sourceRoot": "projects/archetypal-bar/src",
       "prefix": "app",
       "architect": {
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "browserTarget": "archetypal-bar:build",
+            "port": 6006
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "browserTarget": "archetypal-bar:build"
+          }
+        },
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
@@ -73,7 +86,7 @@
             },
             "development": {
               "browserTarget": "archetypal-bar:build:development"
-            }
+            },
           },
           "defaultConfiguration": "development"
         },
@@ -100,7 +113,7 @@
             ],
             "scripts": []
           }
-        }
+        },
       }
     },
     "reusable-api-bar": {
@@ -233,6 +246,6 @@
           }
         }
       }
-    }
+    },
   }
 }
