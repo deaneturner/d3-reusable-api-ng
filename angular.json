@@ -3,5 +3,236 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "archetypal-bar": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/archetypal-bar",
+      "sourceRoot": "projects/archetypal-bar/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/archetypal-bar",
+            "index": "projects/archetypal-bar/src/index.html",
+            "main": "projects/archetypal-bar/src/main.ts",
+            "polyfills": "projects/archetypal-bar/src/polyfills.ts",
+            "tsConfig": "projects/archetypal-bar/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/archetypal-bar/src/favicon.ico",
+              "projects/archetypal-bar/src/assets"
+            ],
+            "styles": [
+              "projects/archetypal-bar/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/archetypal-bar/src/environments/environment.ts",
+                  "with": "projects/archetypal-bar/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "archetypal-bar:build:production"
+            },
+            "development": {
+              "browserTarget": "archetypal-bar:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "archetypal-bar:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/archetypal-bar/src/test.ts",
+            "polyfills": "projects/archetypal-bar/src/polyfills.ts",
+            "tsConfig": "projects/archetypal-bar/tsconfig.spec.json",
+            "karmaConfig": "projects/archetypal-bar/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/archetypal-bar/src/favicon.ico",
+              "projects/archetypal-bar/src/assets"
+            ],
+            "styles": [
+              "projects/archetypal-bar/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "reusable-api-bar": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/reusable-api-bar",
+      "sourceRoot": "projects/reusable-api-bar/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/reusable-api-bar",
+            "index": "projects/reusable-api-bar/src/index.html",
+            "main": "projects/reusable-api-bar/src/main.ts",
+            "polyfills": "projects/reusable-api-bar/src/polyfills.ts",
+            "tsConfig": "projects/reusable-api-bar/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/reusable-api-bar/src/favicon.ico",
+              "projects/reusable-api-bar/src/assets"
+            ],
+            "styles": [
+              "projects/reusable-api-bar/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/reusable-api-bar/src/environments/environment.ts",
+                  "with": "projects/reusable-api-bar/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "reusable-api-bar:build:production"
+            },
+            "development": {
+              "browserTarget": "reusable-api-bar:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "reusable-api-bar:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/reusable-api-bar/src/test.ts",
+            "polyfills": "projects/reusable-api-bar/src/polyfills.ts",
+            "tsConfig": "projects/reusable-api-bar/tsconfig.spec.json",
+            "karmaConfig": "projects/reusable-api-bar/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/reusable-api-bar/src/favicon.ico",
+              "projects/reusable-api-bar/src/assets"
+            ],
+            "styles": [
+              "projects/reusable-api-bar/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "shared": {
+      "projectType": "library",
+      "root": "projects/shared",
+      "sourceRoot": "projects/shared/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/shared/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/shared/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/shared/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/shared/src/test.ts",
+            "tsConfig": "projects/shared/tsconfig.spec.json",
+            "karmaConfig": "projects/shared/karma.conf.js"
+          }
+        }
+      }
+    }
   }
 }
