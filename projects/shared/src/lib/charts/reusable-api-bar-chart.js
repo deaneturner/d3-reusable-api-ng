@@ -130,6 +130,15 @@ function ReusableApiBarChart() {
     .remove();
   }
 
+  exports.width = function(_x) {
+    if (!arguments.length) {
+      return width;
+    }
+    width = _x;
+
+    return this;
+  };
+
   exports.height = function(_x) {
     if (!arguments.length) {
       return height;
@@ -155,15 +164,6 @@ function ReusableApiBarChart() {
     let value = dispatcher.on.apply(dispatcher, arguments);
 
     return value === dispatcher ? exports : value;
-  };
-
-  exports.width = function(_x) {
-    if (!arguments.length) {
-      return width;
-    }
-    width = _x;
-
-    return this;
   };
 
   return exports;

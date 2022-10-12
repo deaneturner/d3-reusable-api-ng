@@ -27,6 +27,12 @@ export class AppComponent implements OnInit{
         const barChart = ReusableApiBarChart();
         const dataset = data;
 
+        /*
+         * Running ResusableApiBarChart returns 'exports'.
+         * 'exports' is a function that takes a selection and returns a chart.
+         *
+         * width: is a function of 'exports' and it sets the width (private member) property of ReusableApiBarChart.
+         */
         barChart
           .width(960)
           .height(500)
@@ -39,6 +45,15 @@ export class AppComponent implements OnInit{
             console.log('data', data);
           });
 
+        /*
+         * barchart (the result of running ReusableApiBarChart())
+         *  is the function 'exports'.
+         *
+         * 'exports' accepts a selection as an argument (e.g. dev.chart-container).
+         * function exports(_selection){
+         *  _selection.each(function(_data){
+         *  data = _data;
+         */
         container.datum(dataset).call(barChart);
       })
       .catch((error) => {
